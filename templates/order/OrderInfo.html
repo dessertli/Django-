@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>爱鲜蜂</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/swiper.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/reset.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'base/css/base.css' %}" />
+
+    <script type="text/javascript" src="{% static 'user/js/md5.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/js/jquery-3.1.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/js/swiper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'base/js/base.js' %}"></script>
+    <title>订单信息</title>
+
+
+    <script type="text/javascript" src="{% static 'order/js/order_info.js' %}"></script>
+
+</head>
+<body>
+
+    <div class="container">
+    <h3>订单id：{{ order.id }}</h3>
+
+    <ul>
+        {% for ordergoods in order.ordergoodsmodel_set.all %}
+
+
+            <li>
+                <img src="{{ ordergoods.og_goods.productimg }}" alt="ordergoods.og_goods.productlongname">
+                <span>{{ ordergoods.og_num }}</span>
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+    <button id="alipay" order_id="{{ order.id }}" class="btn btn-success btn-block">Alipay</button>
+
+    </div>
+
+
+</body>
+</html>
